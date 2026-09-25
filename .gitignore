@@ -1,0 +1,69 @@
+# ==============================================================================
+# DataLocker — Git Ignore Policy
+# ==============================================================================
+
+# --- Node / Frontend Artifacts ---
+node_modules/
+dist/
+dist-ssr/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Rust & Cargo Artifacts ---
+target/
+src-tauri/target/
+**/*.rs.bk
+*.pdb
+Cargo.lock.backup
+
+# --- Native Binaries & Distribution Packages ---
+# Binaries in root or release outputs
+/ChronoLock
+/chronolock
+/DataLocker
+/data-locker
+*.exe
+*.msi
+*.AppImage
+*.deb
+*.rpm
+*.dmg
+*.pkg
+
+# --- Encrypted Lockers & Temporary Working Files ---
+*.locker
+*.locker.tmp
+*.tmp
+.datalocker_temp_extract/
+
+# --- SQLite Databases & Runtime Caches ---
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+timer_state.enc
+
+# --- Environment & Credentials ---
+.env
+.env.*
+!.env.example
+
+# --- IDE & Editor Specific ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+.gemini/
+
+# --- Build Logs ---
+*.log
+logs/

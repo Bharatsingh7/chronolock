@@ -1,0 +1,77 @@
+name: Release ChronoLock
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-and-release:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: 'ubuntu-22.04'
+            args: ''
+          - platform: 'windows-latest'
+            args: ''
+
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: Install Linux system dependencies
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev build-essential curl wget file libssl-dev libayatana-appindicator3-dev librsvg2-dev rpm
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Run test suite
+        run: |
+          cd src-tauri
+          cargo test
+          cd ..
+
+      - name: Build Tauri Desktop Application & Installers
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: v__VERSION__
+          releaseName: 'ChronoLock v__VERSION__'
+          releaseBody: |
+            ## ⏳ ChronoLock — Industrial-Grade Timed Vault Release
+            
+            ### Included Installers & Binaries:
+            - **Windows**: `.msi` (Windows Installer) & `-setup.exe` (NSIS Installer)
+            - **Linux**: `.AppImage` (Portable standalone), `.deb` (Debian/Ubuntu), `.rpm` (Fedora/RHEL)
+            
+            ### Core Capabilities:
+            - Authenticated AES-256-GCM chunked stream encryption (50GB+ supported)
+            - Argon2id key derivation with 32-byte CSPRNG salt & HKDF-SHA256
+            - Enforced time-lock countdown with RFC 4330 SNTP anti-clock-tampering
+            - Industrial-grade deletion protection requiring master password authorization
+            - Power-loss resilience with kernel disk sync (`sync_all`) and write protection
+          releaseDraft: false
+          prerelease: false
