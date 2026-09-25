@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/Bharatsingh7/chronolock/actions/workflows/release.yml/badge.svg)](https://github.com/Bharatsingh7/chronolock/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-brightgreen.svg)](#-downloads--installers)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-brightgreen.svg)](#-releases--packages)
 [![Cryptography](https://img.shields.io/badge/Crypto-AES--256--GCM%20%7C%20Argon2id-blueviolet.svg)](#-cryptography--security-architecture)
 [![Streaming](https://img.shields.io/badge/Capacity-50GB%2B%20Streaming-orange.svg)](#-high-throughput-streaming-engine)
 
@@ -12,19 +12,20 @@ It empowers users to seal sensitive files, folders, and entire directories insid
 
 ---
 
-## 📦 Downloads & Installers
+## 📦 Releases & Packages
 
-Production installers and standalone packages are compiled automatically for every release on [**GitHub Releases**](https://github.com/Bharatsingh7/chronolock/releases):
+Pre-compiled binary packages and full source code archives are published directly under [**GitHub Releases**](https://github.com/Bharatsingh7/chronolock/releases).
 
-| Operating System | Package Type | Direct Download | Description / Quick Start |
+| Operating System | Package Type | Artifact | Description / Installation |
 |:---|:---|:---|:---|
-| **Windows 10 / 11** | **NSIS Installer (`.exe`)** | [⬇️ Download EXE](https://github.com/Bharatsingh7/chronolock/releases/latest) | Complete setup wizard with desktop & start menu shortcuts (`ChronoLock-setup.exe`) |
-| **Windows 10 / 11** | **MSI Package (`.msi`)** | [⬇️ Download MSI](https://github.com/Bharatsingh7/chronolock/releases/latest) | Enterprise & silent automated deployment (`ChronoLock.msi`) |
-| **Linux (All Distros)** | **Portable (`.AppImage`)** | [⬇️ Download AppImage](https://github.com/Bharatsingh7/chronolock/releases/latest) | `chmod +x ChronoLock*.AppImage && ./ChronoLock*.AppImage` |
-| **Linux (Ubuntu / Debian)** | **Debian Package (`.deb`)** | [⬇️ Download DEB](https://github.com/Bharatsingh7/chronolock/releases/latest) | `sudo dpkg -i ChronoLock*.deb` |
-| **Linux (Fedora / RHEL)** | **RPM Package (`.rpm`)** | [⬇️ Download RPM](https://github.com/Bharatsingh7/chronolock/releases/latest) | `sudo rpm -i ChronoLock*.rpm` |
+| **Windows 10 / 11** | **NSIS Setup Installer** | `ChronoLock-setup.exe` | Complete desktop setup wizard with start menu shortcuts |
+| **Windows 10 / 11** | **MSI Package** | `ChronoLock.msi` | Enterprise Windows installer for silent or system deployment |
+| **Linux (Universal)** | **AppImage** | `ChronoLock.AppImage` | Portable standalone package (`chmod +x ChronoLock*.AppImage && ./ChronoLock*.AppImage`) |
+| **Linux (Ubuntu / Debian)** | **Debian Package** | `ChronoLock_amd64.deb` | Standard package (`sudo dpkg -i ChronoLock*.deb`) |
+| **Linux (Fedora / RHEL)** | **RPM Package** | `ChronoLock.x86_64.rpm` | RedHat / Fedora package (`sudo rpm -i ChronoLock*.rpm`) |
+| **All Platforms** | **Source Code Archive** | `Source code (zip / tar.gz)` | Complete source tree for auditing and local compilation |
 
-> 📌 All builds and release notes are available on [**github.com/Bharatsingh7/chronolock/releases**](https://github.com/Bharatsingh7/chronolock/releases).
+👉 **Download all packages and source archives directly from the [Releases page](https://github.com/Bharatsingh7/chronolock/releases).**
 
 ---
 
